@@ -11,20 +11,7 @@
 
     <form action="{{route('clientes.cadastrar')}}" id="form-cliente" method="post">
         
-        {{ csrf_field() }}
-              
-        <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome">
-        </div>
-        <div class="form-group">
-            <label for="telefone">Telefone</label>
-            <input type="text" class="form-control" id="telefone" name="telefone">
-        </div>
-        <div class="form-group">
-            <label for="telefone">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email">
-        </div>
+        @include('layouts._form_clientes')
         
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
