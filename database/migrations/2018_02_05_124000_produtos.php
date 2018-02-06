@@ -17,9 +17,7 @@ class Produtos extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('vias');
-            $table->string('tamanho');
-            $table->boolean('numerar');
-            $table->boolean('serrilhar');
+            $table->string('tamanho');      
             $table->decimal('preco', 8, 3);
 
         });
