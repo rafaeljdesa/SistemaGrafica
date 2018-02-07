@@ -21,7 +21,24 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('produtos.cadastro')}}">Cadastro</a>
-                        <!-- <a class="dropdown-item" href="{{route('produtos.consulta')}}">Consulta</a> -->
+                        <a class="dropdown-item" href="{{route('produtos.consulta')}}">Consulta</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Materiais
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('materiais.cadastro')}}">Cadastro</a>
+                        <a class="dropdown-item" href="{{route('materiais.consulta')}}">Consulta</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Orçamentos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('orcamentos.cadastro')}}">Cadastro</a>
                     </div>
                 </li>
             </ul>

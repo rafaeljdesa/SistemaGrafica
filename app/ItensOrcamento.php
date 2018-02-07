@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItensOrcamento extends Model
 {
+    protected $table = 'itens_orcamentos';
+    public $timestamps = false;
+    
     public function orcamento(){
         return $this->belongsTo('App\Orcamento', 'orcamento_id');
     }
