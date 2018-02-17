@@ -1,7 +1,7 @@
 @extends('layouts._home')
 @section('content')
     
-    <h3 class="text-center">Cadastro de orçamentos</h3>
+    <h3 class="text-center">Cadastro de orçamento</h3>
 
     <form action="" id="form-material" method="post">
         
