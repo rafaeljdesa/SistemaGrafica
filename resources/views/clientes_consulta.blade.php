@@ -16,7 +16,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">E-mail</th>
-                <th scope="col">Ação</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +27,9 @@
                     <td>{{$cliente->telefone}}</td>
                     <td>{{$cliente->email}}</td>    
                     <td>
-                        <a class="btn btn-warning mr-2" href="{{route('clientes.editar', $cliente->id)}}">Editar</button>
-                        <a class="btn btn-danger deletar" href="javascript: if(confirm('Deseja deletar este cliente?')){ window.location.href = '{{route('clientes.deletar', $cliente->id)}}' } ">Deletar</button>
+                        <a class="mr-2" href="{{route('clientes.editar', $cliente->id)}}"><img src="{{asset('icons/edit.png')}}" alt="Editar"></a>
+                        <a class="" href="javascript: if(confirm('Deseja deletar este cliente?')){ window.location.href = '{{route('clientes.deletar', $cliente->id)}}' } "><img src="{{asset('icons/delete.png')}}" alt="Deletar"></a>
+                    
                         
                     </td>
                 </tr>

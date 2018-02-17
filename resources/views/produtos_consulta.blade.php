@@ -18,7 +18,7 @@
                 <th scope="col">Vias</th>
                 <th scope="col">Tamanho</th>
                 <th scope="col">Preço(R$)</th>
-                <th scope="col">Ação</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -31,8 +31,8 @@
                     <td>{{$produto->tamanho}}</td>    
                     <td>{{number_format($produto->preco, 3, ',', '.')}}</td>    
                     <td>
-                        <a class="btn btn-warning mr-2" href="{{route('produtos.editar', $produto->id)}}">Editar</button>
-                        <a class="btn btn-danger deletar" href="javascript: if(confirm('Deseja deletar este produto?')){ window.location.href = '{{route('produtos.deletar', $produto->id)}}' } ">Deletar</button>
+                        <a class="mr-2" href="{{route('produtos.editar', $produto->id)}}"><img src="{{asset('icons/edit.png')}}" alt="Editar"></a>
+                        <a class="" href="javascript: if(confirm('Deseja deletar este produto?')){ window.location.href = '{{route('produtos.deletar', $produto->id)}}' } "><img src="{{asset('icons/delete.png')}}" alt="Deletar"></a>
                         
                     </td>
                 </tr>

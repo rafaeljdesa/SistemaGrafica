@@ -17,7 +17,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Produto(id)</th>
                 <th scope="col">Preço(R$)</th>
-                <th scope="col">Ação</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +29,8 @@
                     <td>{{$material->produto_id}}</td>                            
                     <td>{{number_format($material->preco, 3, ',', '.')}}</td>    
                     <td>
-                        <a class="btn btn-warning mr-2" href="{{route('materiais.editar', $material->id)}}">Editar</button>
-                        <a class="btn btn-danger deletar" href="javascript: if(confirm('Deseja deletar este material?')){ window.location.href = '{{route('materiais.deletar', $material->id)}}' } ">Deletar</button>
+                        <a class="mr-2" href="{{route('materiais.editar', $material->id)}}"><img src="{{asset('icons/edit.png')}}" alt="Editar"></a>
+                        <a class="" href="javascript: if(confirm('Deseja deletar este material?')){ window.location.href = '{{route('materiais.deletar', $material->id)}}' } "><img src="{{asset('icons/delete.png')}}" alt="Deletar"></a>
                         
                     </td>
                 </tr>
