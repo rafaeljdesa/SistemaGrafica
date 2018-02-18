@@ -29,7 +29,7 @@
                         <td>{{$produto->tamanho}}</td>    
                         <td>{{number_format($produto->preco, 3, ',', '.')}}</td>    
                         <td>
-                            <a class="btn btn-success"href=""><img src="{{asset('icons/add.png')}}" alt="Adicionar"></a>
+                            <a class="btn btn-success" href="{{route('lancar.produto')}}"><img src="{{asset('icons/add.png')}}" alt="Adicionar"></a>
                         </td>
                     </tr>
                 @endforeach    

@@ -41,8 +41,11 @@
         <div class="col-6">
             <label for=""> Materiais</label>
             <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target=".modal-materiais"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar material</button>
+                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target=".modal-materiais"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar material</button>
             </div>
+            
+            @include('layouts._modal_materiais')
+
             <table class="table table-orcamento">
                 <thead>
                     <tr>

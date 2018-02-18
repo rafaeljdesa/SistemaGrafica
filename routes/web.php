@@ -67,3 +67,5 @@ Route::get('materiais/consulta/deletar/{id}', 'MateriaisController@deletar')->na
 /****************Orcamentos*********************/
 
 Route::get('/orcamentos/cadastro', 'OrcamentosController@index')->name('orcamentos.cadastro');
+
+Route::get('/orcamentos/cadastro/{id}', 'OrcamentosController@lancarProduto')->name('lancar.produto');
