@@ -28,13 +28,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>                     
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>    
+                    @isset($produtoLancar)    
+                        @foreach($produtoLancar as $produtoLancado)
+                        <tr>                     
+                            <td>{{$produtoLancado->id}}</td>
+                            <td>{{$produtoLancado->nome}}</td>
+                            <td>{{$produtoLancado->vias}}</td>
+                            <td>{{$produtoLancado->tamanho}}</td>
+                            <td>{{number_format($produtoLancado->preco, 3, ',', '.')}}</td>
+                        </tr>
+                        @endforeach
+                    @endisset        
                 </tbody>
             </table>
         </div>
@@ -57,13 +61,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>                     
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>    
+                    @isset($materialLancar)    
+                        @foreach($materialLancar as $materialLancado)
+                        <tr>                     
+                            <td>{{$materialLancado->id}}</td>    
+                            <td>{{$materialLancado->nome}}</td>    
+                            <td>{{$materialLancado->produto_id}}</td>                            
+                            <td>{{number_format($materialLancado->preco, 3, ',', '.')}}</td>
+                        </tr>
+                        @endforeach    
+                    @endisset
                 </tbody>
             </table>
         </div>

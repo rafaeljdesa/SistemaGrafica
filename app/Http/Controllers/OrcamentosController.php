@@ -12,6 +12,11 @@ use App\Cliente;
 class OrcamentosController extends Controller
 {
     public function index(){
+
+        session_start();
+
+        $_SESSION['produto'] = array();
+        
         $produtos = Produto::all();
         $materiais = Material::all();
         $clientes = Cliente::all();
@@ -20,4 +25,19 @@ class OrcamentosController extends Controller
                                            'materiais' => $materiais,
                                            'clientes' => $clientes]);
     }
+
+    public function lancarProduto(Request $request, $id){
+
+        session_start();
+
+        $_SESSION['produto'][] = $id;
+
+        $produtoLancar = DB::table('produtos')->whereIn('id', [$_SESSION['produto']])->get();
+
+        $materialLancar = DB::table('materiais')->whereIn('produto_id', [$_SESSION['produto']])->get();
+
+        return redirect()->route('orcamentos.cadastro', ['produtoLancar' => $produtoLancar,
+                                                        'materialLancar' => $materialLancar]);
+    }
+
 }
