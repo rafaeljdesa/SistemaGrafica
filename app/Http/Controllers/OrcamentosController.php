@@ -18,6 +18,8 @@ class OrcamentosController extends Controller
 
         $_SESSION['produto'] = array();
         
+        $_SESSION['material'] = array();
+        
         $produtos = Produto::all();
         $materiais = Material::all();
         $clientes = Cliente::all();
@@ -29,18 +31,37 @@ class OrcamentosController extends Controller
 
     public function lancarProduto($id){
 
-        session_start();
+        session_start(); 
 
-        $_SESSION['produto'][] = $id; 
+        $produtoLancar = DB::table('produtos')->where('id', $id )->get();
 
-        $produtoLancar = DB::table('produtos')->whereIn('id',[$_SESSION['produto']] )->get();
+        $materialLancar = DB::table('materiais')->where('produto_id', $id )->get();
 
-        $materialLancar = DB::table('materiais')->whereIn('produto_id', [$_SESSION['produto']] )->get();
+       foreach($produtoLancar as $p){
+            $_SESSION['produto'][] = 
+            [
+                'id'        =>   $p->id,
+                'nome'      =>   $p->nome,
+                'vias'      =>   $p->vias,
+                'tamanho'   =>   $p->tamanho,
+                'preco'     =>   $p->preco
+            ];
+       }     
 
-        // dd($_SESSION['produto']);
+       $produtoLancar = $_SESSION['produto'];
+       
+       foreach($materialLancar as $m){
+            $_SESSION['material'][] = 
+            [
+                'id'           =>   $m->id,
+                'nome'         =>   $m->nome,
+                'produto_id'   =>   $m->produto_id,
+                'preco'        =>   $m->preco
+                
+            ];
+       }     
 
-        /* return redirect()->route('orcamentos.cadastro', ['produtoLancar' => $produtoLancar,
-                                                        'materialLancar' => $materialLancar]); */
+        $materialLancar = $_SESSION['material'];
 
         $produtos = Produto::all();
         $materiais = Material::all();

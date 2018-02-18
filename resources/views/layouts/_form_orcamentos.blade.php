@@ -1,4 +1,3 @@
-{{print_r($_SESSION['produto'])}}
 <div class="form-group">
     <label for="cliente">Cliente</label>       
     <select class="form-control" id="cliente" name="cliente">
@@ -32,14 +31,14 @@
                     @isset($produtoLancar)    
                         @foreach($produtoLancar as $produtoLancado)
                         <tr>                     
-                            <td>{{$produtoLancado->id}}</td>
-                            <td>{{$produtoLancado->nome}}</td>
-                            <td>{{$produtoLancado->vias}}</td>
-                            <td>{{$produtoLancado->tamanho}}</td>
-                            <td>{{number_format($produtoLancado->preco, 3, ',', '.')}}</td>
+                            <td>{{$produtoLancado['id']}}</td>
+                            <td>{{$produtoLancado['nome']}}</td>
+                            <td>{{$produtoLancado['vias']}}</td>
+                            <td>{{$produtoLancado['tamanho']}}</td>
+                            <td>{{number_format($produtoLancado['preco'], 3, ',', '.')}}</td>
                         </tr>
                         @endforeach
-                    @endisset        
+                    @endisset         
                 </tbody>
             </table>
         </div>
@@ -65,10 +64,10 @@
                     @isset($materialLancar)    
                         @foreach($materialLancar as $materialLancado)
                         <tr>                     
-                            <td>{{$materialLancado->id}}</td>    
-                            <td>{{$materialLancado->nome}}</td>    
-                            <td>{{$materialLancado->produto_id}}</td>                            
-                            <td>{{number_format($materialLancado->preco, 3, ',', '.')}}</td>
+                            <td>{{$materialLancado['id']}}</td>    
+                            <td>{{$materialLancado['nome']}}</td>    
+                            <td>{{$materialLancado['produto_id']}}</td>                            
+                            <td>{{number_format($materialLancado['preco'], 3, ',', '.')}}</td>
                         </tr>
                         @endforeach    
                     @endisset
