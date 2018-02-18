@@ -26,7 +26,7 @@
                         <td>{{$material->produto_id}}</td>                            
                         <td>{{number_format($material->preco, 3, ',', '.')}}</td>    
                         <td>
-                            <a class="btn btn-success"href=""><img src="{{asset('icons/add.png')}}" alt="Adicionar"></a>
+                            <a class="btn btn-success"href="{{route('lancar.material', $material->id)}}"><img src="{{asset('icons/add.png')}}" alt="Adicionar"></a>
                         </td>
                     </tr>
                 @endforeach    

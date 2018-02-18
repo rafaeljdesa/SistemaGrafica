@@ -21,8 +21,7 @@
             </thead>
             <tbody>
                 @foreach($produtos as $produto)
-                    <tr>               
-                        
+                    <tr>                      
                         <td>{{$produto->id}}</td>    
                         <td>{{$produto->nome}}</td>    
                         <td>{{$produto->vias}}</td>    

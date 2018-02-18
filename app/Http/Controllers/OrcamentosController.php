@@ -11,7 +11,7 @@ use App\Cliente;
 
 class OrcamentosController extends Controller
 {
-    
+
     public function index(){
 
         session_start();
@@ -47,8 +47,6 @@ class OrcamentosController extends Controller
                 'preco'     =>   $p->preco
             ];
        }     
-
-       $produtoLancar = $_SESSION['produto'];
        
        foreach($materialLancar as $m){
             $_SESSION['material'][] = 
@@ -61,19 +59,70 @@ class OrcamentosController extends Controller
             ];
        }     
 
+        $produtoLancar = $_SESSION['produto'];
+
         $materialLancar = $_SESSION['material'];
 
         $produtos = Produto::all();
         $materiais = Material::all();
-        $clientes = Cliente::all();                                                        
+        $clientes = Cliente::all();              
+        
+        $total = $this->calculaTotal($produtoLancar);
+               
+        return view('orcamentos_cadastro',['produtos' => $produtos,
+                                           'materiais' => $materiais,
+                                           'clientes' => $clientes,
+                                           'produtoLancar' => $produtoLancar,
+                                           'materialLancar' => $materialLancar,
+                                           'total' => $total]);                                                         
+    
+                                                 
+    }
+
+    public function lancarMaterial($id){
+        
+        session_start();
+
+        $materialLancar = DB::table('materiais')->where('id', $id )->get();
+
+        foreach($materialLancar as $m){
+            $_SESSION['material'][] = 
+            [
+                'id'           =>   $m->id,
+                'nome'         =>   $m->nome,
+                'produto_id'   =>   $m->produto_id,
+                'preco'        =>   $m->preco
+                
+            ];
+        }     
+        
+        $produtoLancar = $_SESSION['produto'];
+
+        $materialLancar = $_SESSION['material'];
+        
+        $produtos = Produto::all();
+        $materiais = Material::all();
+        $clientes = Cliente::all();
+
+        $total = $this->calculaTotal($materialLancar);
         
         return view('orcamentos_cadastro',['produtos' => $produtos,
                                            'materiais' => $materiais,
                                            'clientes' => $clientes,
                                            'produtoLancar' => $produtoLancar,
-                                           'materialLancar' => $materialLancar]);                                                         
-    
-                                                 
+                                           'materialLancar' => $materialLancar]);
+    }
+
+    public function calculaTotal($itemLancar){
+        if(!isset($total)){
+            $total = 0;
+        }else{
+            foreach($itemLancar as $itemLancado){
+                $total += $itemLancado['preco'];
+            }
+        }
+        
+        return number_format($total, 2, ',', '.');
     }
 
 }

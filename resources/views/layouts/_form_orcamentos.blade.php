@@ -25,6 +25,7 @@
                         <th scope="col">Vias</th>
                         <th scope="col">Tamanho</th>
                         <th scope="col">Preço(R$)</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +37,7 @@
                             <td>{{$produtoLancado['vias']}}</td>
                             <td>{{$produtoLancado['tamanho']}}</td>
                             <td>{{number_format($produtoLancado['preco'], 3, ',', '.')}}</td>
-                        </tr>
+                        </tr> 
                         @endforeach
                     @endisset         
                 </tbody>
@@ -57,7 +58,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Produto(id)</th>
                         <th scope="col">Preço(R$)</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +87,7 @@
     <div class="row justify-content-end">
         <div class="col-2">        
             <div id="valor-total" class="total bg-primary p-2 m-2 rounded text-light">
-                <spam>Total: R$</spam>
+                <spam>Total: R${{isset($total) ? $total : ''}}</spam>
             </div>
         </div>    
     </div>
