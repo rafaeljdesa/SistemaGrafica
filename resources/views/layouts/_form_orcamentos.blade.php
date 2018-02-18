@@ -1,3 +1,4 @@
+{{print_r($_SESSION['produto'])}}
 <div class="form-group">
     <label for="cliente">Cliente</label>       
     <select class="form-control" id="cliente" name="cliente">
