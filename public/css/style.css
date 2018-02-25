@@ -1,6 +1,13 @@
 .table-orcamento{
     height: 200px;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-y: scroll;   
+}
 
+.produto-quantidade{
+    width: 50px;
+}
+
+#imagem-fundo{
+    max-width: 100%;
+    height: auto;
 }
