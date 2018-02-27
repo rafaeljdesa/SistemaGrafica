@@ -19,10 +19,10 @@ class ItensOrcamentos extends Migration
             $table->foreign('orcamento_id')->references('id')->on('orcamentos');
             $table->integer('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->boolean('numerar');
-            $table->boolean('serrilhar');
-            $table->integer('quantidade');
-            $table->decimal('preco', 8, 3);                      
+            $table->integer('material_id')->unsigned();
+            $table->foreign('material_id')->references('id')->on('materiais');
+            $table->integer('servico_id')->unsigned();
+            $table->foreign('servico_id')->references('id')->on('servicos');                   
 
         });
     }

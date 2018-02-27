@@ -13,8 +13,6 @@ class ProdutosController extends Controller
         $produto = new Produto;
 
         $produto->nome = $request->nome;
-        $produto->vias = $request->vias;
-        $produto->tamanho = $request->tamanho;
         $produto->preco = $request->preco;
         $produto->save();
         
@@ -41,8 +39,6 @@ class ProdutosController extends Controller
         $produto = Produto::find($id);
         
         $produto->nome = $request->nome;
-        $produto->vias = $request->vias;
-        $produto->tamanho = $request->tamanho;
         $produto->preco = $request->preco;
 
         $produto->save();

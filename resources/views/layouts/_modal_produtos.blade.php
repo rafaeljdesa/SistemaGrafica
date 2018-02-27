@@ -13,8 +13,8 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Vias</th>
-                    <th scope="col">Tamanho</th>
+                    <!-- <th scope="col">Vias</th>
+                    <th scope="col">Tamanho</th> -->
                     <th scope="col">Preço(R$)</th>
                     <th scope="col">Ação</th>
                 </tr>
@@ -24,8 +24,8 @@
                     <tr>                      
                         <td>{{$produto->id}}</td>    
                         <td>{{$produto->nome}}</td>    
-                        <td>{{$produto->vias}}</td>    
-                        <td>{{$produto->tamanho}}</td>    
+                        <!-- <td>{{$produto->vias}}</td>    
+                        <td>{{$produto->tamanho}}</td> -->    
                         <td>{{number_format($produto->preco, 3, ',', '.')}}</td>    
                         <td>
                             <a class="btn btn-success" href="{{route('lancar.produto', $produto->id)}}"><img src="{{asset('icons/add.png')}}" alt="Adicionar"></a>

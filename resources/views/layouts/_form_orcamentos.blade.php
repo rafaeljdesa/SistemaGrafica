@@ -1,8 +1,9 @@
 <div class="form-group">
     <label for="cliente">Cliente</label>       
     <select class="form-control" id="cliente" name="cliente">
+            <option value="Selecione o cliente" selected >Selecione o cliente</option>
         @foreach($clientes as $cliente)    
-            <option {{isset($cliente->nome) && ($cliente->nome == $cliente->nome) ? 'selected' : '' }} value="{{$cliente->nome}}" >{{$cliente->nome}}</option>
+            <option {{isset($cliente->nome) ? '' : '' }} value="{{$cliente->nome}}" >{{$cliente->nome}}</option>
         @endforeach
     </select>
 </div>
@@ -23,8 +24,8 @@
                         <tr class="table-primary text-center">
                             <th scope="col">Id</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Vias</th>
-                            <th scope="col">Tamanho</th>
+                            <!-- <th scope="col">Vias</th>
+                            <th scope="col">Tamanho</th> -->
                             <th scope="col">Preço(R$)</th>
                             <th scope="col">QTD</th>
                             <th scope="col">Ação</th>
@@ -36,8 +37,6 @@
                             <tr>                     
                                 <td>{{$produtoLancado['id']}}</td>
                                 <td>{{$produtoLancado['nome']}}</td>
-                                <td>{{$produtoLancado['vias']}}</td>
-                                <td>{{$produtoLancado['tamanho']}}</td>
                                 <td>{{number_format($produtoLancado['preco'], 3, ',', '.')}}</td>
                                 <td><input type="text" class="produto-quantidade" value="{{$produtoLancado['quantidade']}}"></td>
                                 <td><a class="" href="{{route('deletar.produto', $produtoLancado['id'])}}"><img src="{{asset('icons/delete.png')}}" alt="Deletar"></a></td>
@@ -96,7 +95,7 @@
     <div class="row justify-content-end">
         <div class="col-2">        
             <div class="total bg-primary p-2 m-2 rounded text-light">
-                <spam id="valor-total">Total: </spam>
+                <spam id="valor-total">Total: R${{isset($totalProdutos) || isset($totalMateriais) ? number_format($totalProdutos + $totalMateriais, 2, ',','.') : '0,00'}}</spam>
             </div>
         </div>    
     </div>

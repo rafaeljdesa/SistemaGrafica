@@ -3,11 +3,13 @@
     
     <h3 class="text-center">Cadastro de orçamento</h3>
 
-    <form action="" id="form-material" method="post">
+    <form action="#" id="form-material" method="post">
         
         @include('layouts._form_orcamentos')
         
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a class="btn btn-warning" href="{{route('orcamentos.cadastro')}}">Limpar</a>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+    
     </form>
 
 

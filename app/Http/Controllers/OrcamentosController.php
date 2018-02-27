@@ -45,8 +45,6 @@ class OrcamentosController extends Controller
                 [
                     'id'            =>   $p->id,
                     'nome'          =>   $p->nome,
-                    'vias'          =>   $p->vias,
-                    'tamanho'       =>   $p->tamanho,
                     'preco'         =>   $p->preco,
                     'quantidade'    =>   1
                 ];
@@ -77,16 +75,19 @@ class OrcamentosController extends Controller
 
         $produtos = Produto::all();
         $materiais = Material::all();
-        $clientes = Cliente::all();              
+        $clientes = Cliente::all();  
         
-        $total = $this->calculaTotal($produtoLancar);
+        $totalProdutos = $this->calculaTotProd();
+
+        $totalMateriais = $this->calculaTotMat();
                
         return view('orcamentos_cadastro',['produtos' => $produtos,
                                            'materiais' => $materiais,
                                            'clientes' => $clientes,
                                            'produtoLancar' => $produtoLancar,
                                            'materialLancar' => $materialLancar,
-                                           'total' => $total]);                                                         
+                                           'totalProdutos' => $totalProdutos,                                                         
+                                           'totalMateriais' => $totalMateriais]);                                                         
     
                                                  
     }
@@ -122,26 +123,18 @@ class OrcamentosController extends Controller
         $produtos = Produto::all();
         $materiais = Material::all();
         $clientes = Cliente::all();
-
-        $total = $this->calculaTotal($materialLancar);
         
-        return view('orcamentos_cadastro',['produtos' => $produtos,
-                                           'materiais' => $materiais,
-                                           'clientes' => $clientes,
-                                           'produtoLancar' => $produtoLancar,
-                                           'materialLancar' => $materialLancar]);
-    }
+        $totalProdutos = $this->calculaTotProd();
 
-    public function calculaTotal($itemLancar){
-        if(!isset($total)){
-            $total = 0;
-        }else{
-            foreach($itemLancar as $itemLancado){
-                $total += $itemLancado['preco'];
-            }
-        }
-        
-        return number_format($total, 2, ',', '.');
+        $totalMateriais = $this->calculaTotMat();
+               
+        return view('orcamentos_cadastro',['produtos'       => $produtos,
+                                           'materiais'      => $materiais,
+                                           'clientes'       => $clientes,
+                                           'produtoLancar'  => $produtoLancar,
+                                           'materialLancar' => $materialLancar,
+                                           'totalProdutos'  => $totalProdutos,                                                         
+                                           'totalMateriais' => $totalMateriais]); 
     }
 
     public function deletarProduto($id){
@@ -158,11 +151,17 @@ class OrcamentosController extends Controller
         $materiais = Material::all();
         $clientes = Cliente::all();
         
-        return view('orcamentos_cadastro',['produtos' => $produtos,
-                                           'materiais' => $materiais,
-                                           'clientes' => $clientes,
-                                           'produtoLancar' => $produtoLancar,
-                                           'materialLancar' => $materialLancar]);
+        $totalProdutos = $this->calculaTotProd();
+
+        $totalMateriais = $this->calculaTotMat();
+               
+        return view('orcamentos_cadastro',['produtos'       => $produtos,
+                                           'materiais'      => $materiais,
+                                           'clientes'       => $clientes,
+                                           'produtoLancar'  => $produtoLancar,
+                                           'materialLancar' => $materialLancar,
+                                           'totalProdutos'  => $totalProdutos,                                                         
+                                           'totalMateriais' => $totalMateriais]); 
 
     }
 
@@ -180,12 +179,44 @@ class OrcamentosController extends Controller
         $materiais = Material::all();
         $clientes = Cliente::all();
         
-        return view('orcamentos_cadastro',['produtos' => $produtos,
-                                           'materiais' => $materiais,
-                                           'clientes' => $clientes,
-                                           'produtoLancar' => $produtoLancar,
-                                           'materialLancar' => $materialLancar]);
+        $totalProdutos = $this->calculaTotProd();
 
+        $totalMateriais = $this->calculaTotMat();
+               
+        return view('orcamentos_cadastro',['produtos'       => $produtos,
+                                           'materiais'      => $materiais,
+                                           'clientes'       => $clientes,
+                                           'produtoLancar'  => $produtoLancar,
+                                           'materialLancar' => $materialLancar,
+                                           'totalProdutos'  => $totalProdutos,                                                         
+                                           'totalMateriais' => $totalMateriais]); 
+
+    }
+
+    public function calculaTotProd(){
+
+        $totalProdutos = 0;
+
+        if(isset($_SESSION['produto'])){
+            foreach($_SESSION['produto'] as $produto){
+                $totalProdutos += ($produto['preco'] * $produto['quantidade']);
+            }
+        }
+
+        return $totalProdutos;
+    }
+
+    public function calculaTotMat(){
+
+        $totalMateriais = 0;
+
+        if(isset($_SESSION['material'])){
+            foreach($_SESSION['material'] as $material){
+                $totalMateriais += ($material['preco'] * $material['quantidade']);
+            }
+        }
+        
+        return $totalMateriais;
     }
 
 }

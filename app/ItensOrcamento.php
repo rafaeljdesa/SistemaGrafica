@@ -16,4 +16,12 @@ class ItensOrcamento extends Model
     public function produto(){
         return $this->belongsTo('App\Produto', 'produto_id');
     }
+
+    public function material(){
+        return $this->belongsTo('App\Material', 'material_id');
+    }
+
+    public function servico(){
+        return $this->belongsTo('App\Servico', 'servico_id');
+    }
 }

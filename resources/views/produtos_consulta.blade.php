@@ -15,8 +15,6 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Vias</th>
-                <th scope="col">Tamanho</th>
                 <th scope="col">Preço(R$)</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -26,9 +24,7 @@
                 <tr>               
                     
                     <td>{{$produto->id}}</td>    
-                    <td>{{$produto->nome}}</td>    
-                    <td>{{$produto->vias}}</td>    
-                    <td>{{$produto->tamanho}}</td>    
+                    <td>{{$produto->nome}}</td>        
                     <td>{{number_format($produto->preco, 3, ',', '.')}}</td>    
                     <td>
                         <a class="mr-2" href="{{route('produtos.editar', $produto->id)}}"><img src="{{asset('icons/edit.png')}}" alt="Editar"></a>
