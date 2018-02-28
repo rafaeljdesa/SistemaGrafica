@@ -64,6 +64,25 @@ Route::post('/materiais/consulta/atualizar/{id}', 'MateriaisController@atualizar
 Route::get('materiais/consulta/deletar/{id}', 'MateriaisController@deletar')->name('materiais.deletar');
 
 
+/****************Servicos*********************/
+
+Route::get('/servicos/cadastro', function(){
+    return view('servicos_cadastro');
+})->name('servicos.cadastro');
+
+Route::post('/servicos/cadastro/cadastrar', 'ServicosController@cadastrar')->name('servicos.cadastrar');
+
+Route::get('/servicos/consulta', 'ServicosController@consultar')->name('servicos.consulta');
+
+Route::get('/servicos/consulta/editar/{id}', 'ServicosController@editar')->name('servicos.editar');
+
+Route::post('/servicos/consulta/atualizar/{id}', 'ServicosController@atualizar')->name('servicos.atualizar');
+
+Route::get('servicos/consulta/deletar/{id}', 'ServicosController@deletar')->name('servicos.deletar');
+
+
+
+
 /****************Orcamentos*********************/
 
 Route::get('/orcamentos/cadastro', 'OrcamentosController@index')->name('orcamentos.cadastro');
@@ -72,6 +91,10 @@ Route::get('/orcamentos/cadastro/produto={id}', 'OrcamentosController@lancarProd
 
 Route::get('/orcamentos/cadastro/material={id}', 'OrcamentosController@lancarMaterial')->name('lancar.material');
 
+Route::get('/orcamentos/cadastro/servico={id}', 'OrcamentosController@lancarServico')->name('lancar.servico');
+
 Route::get('/orcamentos/cadastro/deletar/produto={id}', 'OrcamentosController@deletarProduto')->name('deletar.produto');
 
 Route::get('/orcamentos/cadastro/deletar/material={id}', 'OrcamentosController@deletarMaterial')->name('deletar.material');
+
+Route::get('/orcamentos/cadastro/deletar/servico={id}', 'OrcamentosController@deletarServico')->name('deletar.servico');

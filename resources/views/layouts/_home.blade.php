@@ -13,13 +13,13 @@
   </head>
   <body>
     
-        <header>
-            @include('layouts._nav')
-        </header>
-        
-        <div class="container">
-          @yield('content')   
-        </div>
+    <header>
+        @include('layouts._nav')
+    </header>
+    
+    <div class="container">
+      @yield('content')   
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
