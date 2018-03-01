@@ -154,7 +154,8 @@ class OrcamentosController extends Controller
                                            'materialLancar' => $materialLancar,
                                            'servicoLancar' => $servicoLancar,
                                            'totalProdutos'  => $totalProdutos,                                                         
-                                           'totalMateriais' => $totalMateriais]); 
+                                           'totalMateriais' => $totalMateriais,
+                                           'totalServicos' => $totalServicos]); 
     }
 
     public function lancarServico($id){
