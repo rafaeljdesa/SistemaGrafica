@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Materiais extends Migration
+class ItensOrcamentosProdutos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class Materiais extends Migration
      */
     public function up()
     {
-        Schema::create('materiais', function (Blueprint $table){
+        Schema::create('itens_orcamentos_produtos', function (Blueprint $table){
             $table->increments('id');
-            $table->string('nome');
+            $table->integer('orcamento_id')->unsigned();
+            $table->foreign('orcamento_id')->references('id')->on('orcamentos');
             $table->integer('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->decimal('preco', 8, 3);
-                        
+            $table->integer('quantidade');
         });
     }
 
@@ -30,8 +30,6 @@ class Materiais extends Migration
      */
     public function down()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('materiais');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        Schema::dropIfExists('itens_orcamentos_produtos');
     }
 }

@@ -1,9 +1,9 @@
 <div class="form-group">
     <label for="cliente">Cliente</label>       
-    <select class="form-control" id="cliente" name="cliente">
+    <select class="form-control" id="cliente" name="cliente_id">
             <option value="Selecione o cliente" selected >Selecione o cliente</option>
         @foreach($clientes as $cliente)    
-            <option {{isset($cliente->nome) ? '' : '' }} value="{{$cliente->nome}}" >{{$cliente->nome}}</option>
+            <option {{isset($cliente->id) ? '' : '' }} value="{{$cliente->id}}" >{{$cliente->nome}}</option>
         @endforeach
     </select>
 </div>
@@ -127,7 +127,7 @@
 
 <div class="form-group">
     <label for="observacao">Observação</label>
-    <textarea class="form-control" id="observacao" rows="3"></textarea>
+    <textarea class="form-control" id="observacao" rows="3" name="observacao"></textarea>
 </div>
 
 <div class="form-group">
@@ -135,6 +135,7 @@
         <div class="col-2">        
             <div class="total bg-primary p-2 m-2 rounded text-light">
                 <spam id="valor-total">Total: R${{isset($totalProdutos) || isset($totalMateriais) || isset($totalServicos) ? number_format($totalProdutos + $totalMateriais + $totalServicos, 2, ',','.') : '0,00'}}</spam>
+                <input type="hidden" value="{{isset($totalProdutos) || isset($totalMateriais) || isset($totalServicos) ? ($totalProdutos + $totalMateriais + $totalServicos) : 0}}" name="valor_total">
             </div>
         </div>    
     </div>

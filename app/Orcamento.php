@@ -9,10 +9,7 @@ class Orcamento extends Model
     protected $table = 'orcamentos';
     
     public function cliente(){
-        return $this->belongsTo('App\Cliente', 'cliente_id');
+        return $this->belongsTo('App\Cliente');
     }
 
-    public function itens(){
-        return $this->hasMany('App\ItensOrcamento');
-    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ItensOrcamentos extends Migration
+class ItensOrcamentosServicos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class ItensOrcamentos extends Migration
      */
     public function up()
     {
-        Schema::create('itens_orcamentos', function (Blueprint $table){
+        Schema::create('itens_orcamentos_servicos', function (Blueprint $table){
             $table->increments('id');
             $table->integer('orcamento_id')->unsigned();
             $table->foreign('orcamento_id')->references('id')->on('orcamentos');
-            $table->integer('produto_id')->unsigned();
-            $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->integer('material_id')->unsigned();
-            $table->foreign('material_id')->references('id')->on('materiais');
             $table->integer('servico_id')->unsigned();
-            $table->foreign('servico_id')->references('id')->on('servicos');                   
-
+            $table->foreign('servico_id')->references('id')->on('servicos');
+            $table->integer('quantidade');
         });
     }
 
@@ -34,6 +30,6 @@ class ItensOrcamentos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('itens_orcamentos');
+        Schema::dropIfExists('itens_orcamentos_servicos');
     }
 }

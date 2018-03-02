@@ -17,6 +17,7 @@ class Orcamentos extends Migration
             $table->increments('id');
             $table->integer('cliente_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->string('observacao')->nullable();
             $table->decimal('valor_total', 8, 3);
             $table->string('status');
             $table->timestamps();            
@@ -30,6 +31,8 @@ class Orcamentos extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('orcamentos');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

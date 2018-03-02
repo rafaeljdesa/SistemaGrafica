@@ -9,6 +9,9 @@ use App\Material;
 use App\Produto;
 use App\Cliente;
 use App\Servico;
+use App\ItemOrcamentoProduto;
+use App\ItemOrcamentoMaterial;
+use App\ItemOrcamentoServico;
 
 class OrcamentosController extends Controller
 {
@@ -357,6 +360,61 @@ class OrcamentosController extends Controller
         }
         
         return $totalServicos;
+    }
+
+    public function criar(Request $request){
+        session_start();
+
+        $orcamento = new Orcamento;
+
+        $orcamento->cliente_id = $request->cliente_id;
+        $orcamento->observacao = $request->observacao;
+        $orcamento->valor_total = $request->valor_total;
+        $orcamento->status = "ABERTO";
+        $orcamento->save();    
+        
+        $ultimoOrcamento = DB::table('orcamentos')->max('id');
+        
+        // if(isset($_SESSION['produto'])){
+
+            $produtos = $_SESSION['produto'];
+
+            foreach($produtos as $produto){
+                $itemOrcamentoProduto = new ItemOrcamentoProduto;
+                $itemOrcamentoProduto->orcamento_id = $ultimoOrcamento;
+                $itemOrcamentoProduto->produto_id = $produto['id'];
+                $itemOrcamentoProduto->quantidade = $produto['quantidade'];
+                $itemOrcamentoProduto->save();
+            }
+
+        // }
+        // if(isset($_SESSION['material'])){
+            
+            $materiais = $_SESSION['material'];
+
+            foreach($materiais as $material){
+                $itemOrcamentoMaterial = new ItemOrcamentoMaterial;
+                $itemOrcamentoMaterial->orcamento_id = $ultimoOrcamento;
+                $itemOrcamentoMaterial->material_id = $material['id'];
+                $itemOrcamentoMaterial->quantidade = $material['quantidade'];
+                $itemOrcamentoMaterial->save();
+            }
+        // }    
+        // if(isset($_SESSION['servico'])){
+            
+            $servicos = $_SESSION['servico'];
+            
+            foreach($servicos as $servico){
+                $itemOrcamentoServico = new ItemOrcamentoServico;
+                $itemOrcamentoServico->orcamento_id = $ultimoOrcamento;
+                $itemOrcamentoServico->servico_id = $servico['id'];
+                $itemOrcamentoServico->quantidade = $servico['quantidade'];
+                $itemOrcamentoServico->save();
+            }
+        // }    
+        
+        return redirect()->route('orcamentos.cadastro')
+                         ->with('status', 'Orçamento criado com sucesso!');
     }
 
 }

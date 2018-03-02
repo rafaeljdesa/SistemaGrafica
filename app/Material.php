@@ -10,6 +10,6 @@ class Material extends Model
     public $timestamps = false;
     
     public function produto(){
-        return $this->belongsTo('App\Produto', 'produto_id');
+        return $this->belongsTo('App\Produto');
     }
 }
