@@ -19,6 +19,8 @@ class ItensOrcamentosMateriais extends Migration
             $table->foreign('orcamento_id')->references('id')->on('orcamentos');
             $table->integer('material_id')->unsigned();
             $table->foreign('material_id')->references('id')->on('materiais');
+            $table->decimal('preco', 8, 3);
+            $table->decimal('desconto', 8, 3);
             $table->integer('quantidade');
         });
     }

@@ -19,6 +19,8 @@ class ItensOrcamentosServicos extends Migration
             $table->foreign('orcamento_id')->references('id')->on('orcamentos');
             $table->integer('servico_id')->unsigned();
             $table->foreign('servico_id')->references('id')->on('servicos');
+            $table->decimal('preco', 8, 3);
+            $table->decimal('desconto', 8, 3);
             $table->integer('quantidade');
         });
     }

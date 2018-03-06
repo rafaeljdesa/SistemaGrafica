@@ -19,6 +19,8 @@ class ItensOrcamentosProdutos extends Migration
             $table->foreign('orcamento_id')->references('id')->on('orcamentos');
             $table->integer('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->decimal('preco', 8, 3);
+            $table->decimal('desconto', 8, 3);
             $table->integer('quantidade');
         });
     }

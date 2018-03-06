@@ -99,4 +99,6 @@ Route::get('/orcamentos/cadastro/deletar/material={id}', 'OrcamentosController@d
 
 Route::get('/orcamentos/cadastro/deletar/servico={id}', 'OrcamentosController@deletarServico')->name('deletar.servico');
 
+Route::get('/orcamentos/cadastro/alterar/produto={id}', 'OrcamentosController@alterarProduto')->name('alterar.produto');
+
 Route::post('/orcamentos/cadastro/criar', 'OrcamentosController@criar')->name('orcamentos.criar');

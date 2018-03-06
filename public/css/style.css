@@ -3,12 +3,12 @@
     overflow-y: scroll;   
 }
 
-.produto-quantidade{
-    width: 50px;
-}
-
 #imagem-fundo{
     max-width: 100%;
     height: auto;
+}
+
+.form-qtd{
+    width: 50px;
 }
 

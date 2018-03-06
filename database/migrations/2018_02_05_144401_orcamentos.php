@@ -19,6 +19,7 @@ class Orcamentos extends Migration
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->string('observacao')->nullable();
             $table->decimal('valor_total', 8, 3);
+            $table->decimal('desconto', 8, 3);
             $table->string('status');
             $table->timestamps();            
         });

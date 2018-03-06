@@ -417,4 +417,8 @@ class OrcamentosController extends Controller
                          ->with('status', 'Orçamento criado com sucesso!');
     }
 
+    public function alterarProduto($id){
+        
+    }
+
 }

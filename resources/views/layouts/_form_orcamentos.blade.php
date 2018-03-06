@@ -10,10 +10,11 @@
 
 <div class="form-group">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <label for="">Produtos</label>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target=".modal-produtos"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar produto</button>
+                <button type="button" class="btn btn-success mb-2 mr-2" data-toggle="modal" data-target=".modal-produtos"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar</button>
+                <button type="button" class="btn btn-warning mb-2" data-toggle="modal" data-target=".modal-alterar-produtos"><img src="{{asset('icons/edit.png')}}" alt="Editar">Alterar</button>
             </div>
             
             @include('layouts._modal_produtos')
@@ -24,8 +25,6 @@
                         <tr class="table-primary text-center">
                             <th scope="col">Id</th>
                             <th scope="col">Nome</th>
-                            <!-- <th scope="col">Vias</th>
-                            <th scope="col">Tamanho</th> -->
                             <th scope="col">Preço(R$)</th>
                             <th scope="col">QTD</th>
                             <th scope="col">Ação</th>
@@ -38,20 +37,28 @@
                                 <td>{{$produtoLancado['id']}}</td>
                                 <td>{{$produtoLancado['nome']}}</td>
                                 <td>{{number_format($produtoLancado['preco'], 3, ',', '.')}}</td>
-                                <!-- <td><input type="text" class="produto-quantidade" value="{{$produtoLancado['quantidade']}}"></td> -->
                                 <td>{{$produtoLancado['quantidade']}}</td>
-                                <td><a class="" href="{{route('deletar.produto', $produtoLancado['id'])}}"><img src="{{asset('icons/delete.png')}}" alt="Deletar"></a></td>
+                                <td>
+                                    <a class="" href="{{route('deletar.produto', $produtoLancado['id'])}}"><img src="{{asset('icons/delete.png')}}" alt="Deletar"></a>
+                                </td></td>
                             </tr> 
                             @endforeach
                         @endisset         
                     </tbody>
                 </table>
+
+                @include('layouts._modal_alterar_produtos')
+
             </div>
         </div>
-        <div class="col-6">
+   </div>
+</div>       
+<div class="form-group">
+    <div class="row">
+        <div class="col-12">
             <label for=""> Materiais</label>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target=".modal-materiais"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar servico</button>
+                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target=".modal-materiais"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar</button>
             </div>
             
             @include('layouts._modal_materiais')
@@ -75,7 +82,6 @@
                                 <td>{{$materialLancado['nome']}}</td>    
                                 <td>{{$materialLancado['produto_id']}}</td>                            
                                 <td>{{number_format($materialLancado['preco'], 3, ',', '.')}}</td>
-                                <!-- <td><input type="text" class="produto-quantidade" value="{{$materialLancado['quantidade']}}"></td> -->
                                 <td>{{$materialLancado['quantidade']}}</td>
                                 <td><a class="" href="{{route('deletar.material', $materialLancado['id'])}}"><img src="{{asset('icons/delete.png')}}" alt="Deletar"></a></td>
                             </tr>
@@ -85,12 +91,14 @@
                 </table>
             </div>
         </div>
-    </div>    
+    </div>
+</div>
+<div class="form-group">        
     <div class="row mt-2">
         <div class="col-12">
             <label for=""> Servicos</label>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target=".modal-servicos"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar servico</button>
+                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target=".modal-servicos"><img src="{{asset('icons/add.png')}}" alt="Adicionar">Adicionar</button>
             </div>
         
             @include('layouts._modal_servicos')
